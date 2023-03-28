@@ -13,6 +13,9 @@
 		A4C0539729CE2C2B00CA30B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4C0539629CE2C2B00CA30B9 /* Preview Assets.xcassets */; };
 		A4C0539E29D1451900CA30B9 /* SetGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C0539D29D1451900CA30B9 /* SetGameViewModel.swift */; };
 		A4C053A029D1452B00CA30B9 /* SetGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C0539F29D1452B00CA30B9 /* SetGameModel.swift */; };
+		A4C053A229D2223D00CA30B9 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C053A129D2223D00CA30B9 /* AspectVGrid.swift */; };
+		A4C053AA29D2378300CA30B9 /* CardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C053A929D2378300CA30B9 /* CardComponent.swift */; };
+		A4C053AC29D284E600CA30B9 /* Stripe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C053AB29D284E600CA30B9 /* Stripe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		A4C0539629CE2C2B00CA30B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A4C0539D29D1451900CA30B9 /* SetGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameViewModel.swift; sourceTree = "<group>"; };
 		A4C0539F29D1452B00CA30B9 /* SetGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameModel.swift; sourceTree = "<group>"; };
+		A4C053A129D2223D00CA30B9 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
+		A4C053A929D2378300CA30B9 /* CardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardComponent.swift; sourceTree = "<group>"; };
+		A4C053AB29D284E600CA30B9 /* Stripe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stripe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +63,9 @@
 			children = (
 				A4C0538F29CE2C2900CA30B9 /* A3App.swift */,
 				A4C0539129CE2C2900CA30B9 /* SetGameView.swift */,
+				A4C053A929D2378300CA30B9 /* CardComponent.swift */,
+				A4C053A129D2223D00CA30B9 /* AspectVGrid.swift */,
+				A4C053AB29D284E600CA30B9 /* Stripe.swift */,
 				A4C0539D29D1451900CA30B9 /* SetGameViewModel.swift */,
 				A4C0539F29D1452B00CA30B9 /* SetGameModel.swift */,
 				A4C0539329CE2C2B00CA30B9 /* Assets.xcassets */,
@@ -143,9 +152,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4C053AC29D284E600CA30B9 /* Stripe.swift in Sources */,
 				A4C053A029D1452B00CA30B9 /* SetGameModel.swift in Sources */,
 				A4C0539E29D1451900CA30B9 /* SetGameViewModel.swift in Sources */,
 				A4C0539229CE2C2900CA30B9 /* SetGameView.swift in Sources */,
+				A4C053AA29D2378300CA30B9 /* CardComponent.swift in Sources */,
+				A4C053A229D2223D00CA30B9 /* AspectVGrid.swift in Sources */,
 				A4C0539029CE2C2900CA30B9 /* A3App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

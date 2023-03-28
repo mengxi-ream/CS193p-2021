@@ -13,7 +13,7 @@ class SetGameViewModel: ObservableObject {
     static private func createSetGame() -> SetGameModel {
         SetGameModel(
             numsOfShapes: NumOfShapes.allCases.map{ $0.rawValue },
-            shapes: Shape.allCases.map{ $0.rawValue },
+            shapes: CardShape.allCases.map{ $0.rawValue },
             shadings: Shading.allCases.map{ $0.rawValue },
             colors: CardColor.allCases.map{ $0.rawValue }
         )
@@ -44,7 +44,7 @@ enum NumOfShapes: Int, CaseIterable {
     case one = 1, two, three
 }
 
-enum Shape: String, CaseIterable {
+enum CardShape: String, CaseIterable {
     case diamond
     case squiggle
     case oval
