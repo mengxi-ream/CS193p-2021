@@ -21,8 +21,8 @@ class EmojiMemoryGame: ObservableObject {
     static let ballEmojis = ["⚽️", "🏀", "🏈", "⚾️", "🎾", "🏐", "🎱"]
     
     static private func createMemoryGame(_ theme: gameTheme) -> MemoryGame<String> {
-        MemoryGame<String>(chosenTheme: theme) { pairIndex in
-            pairIndex >= theme.emojis.count ? nil : theme.emojis[pairIndex]
+        MemoryGame<String>(chosenTheme: theme) { pairIndex, emojis in
+            pairIndex >= emojis.count ? nil : emojis[pairIndex]
         }
     }
     

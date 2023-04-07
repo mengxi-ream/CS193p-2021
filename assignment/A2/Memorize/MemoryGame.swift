@@ -44,12 +44,13 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         }
     }
     
-    init(chosenTheme: Theme, createCardContent: (Int) -> CardContent?) {
+    init(chosenTheme: Theme, createCardContent: (Int, [CardContent]) -> CardContent?) {
         self.chosenTheme = chosenTheme
         cards = Array<Card>();
         // add numberOfPairsOfCards x 2 cards to cards array
+        let randomEmojis = chosenTheme.emojis.shuffled()
         for pairIndex in 0..<chosenTheme.numPairs {
-            if let content = createCardContent(pairIndex) {
+            if let content = createCardContent(pairIndex, randomEmojis) {
                 cards.append(Card(content: content, id: pairIndex * 2))
                 cards.append(Card(content: content, id: pairIndex * 2 + 1))
             }
@@ -68,7 +69,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     
     struct Theme {
         let name: String
-        let emojis: [String]
+        let emojis: [CardContent]
         var numPairs: Int
         let color: String
     }

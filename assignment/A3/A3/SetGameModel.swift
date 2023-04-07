@@ -22,7 +22,9 @@ struct SetGameModel {
                             shape: shape,
                             shading: shading,
                             color: color,
-                            id: cardId
+                            id: cardId,
+                            isSelected: false,
+                            isMatched: false
                         ))
                         cardId += 1
                     }
@@ -37,5 +39,9 @@ struct SetGameModel {
         let shading: String
         let color: String
         let id: Int
+        
+        var isSelected: Bool
+        var isMatched: Bool
+        var isInDeck: Bool
     }
 }
