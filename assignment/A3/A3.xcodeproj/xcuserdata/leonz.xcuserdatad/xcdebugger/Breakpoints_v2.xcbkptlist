@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "488FFF1D-73EE-41A8-9775-A88D0BA89027"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3A8AFBD9-15A8-485F-9AD0-B1DE3A0E19FF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "A3/SetGameModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "dealCards()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3A8AFBD9-15A8-485F-9AD0-B1DE3A0E19FF - e45aff01d68f80ce"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "A3.SetGameModel.dealCards() -&gt; ()"
+                  moduleName = "A3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonz/Github/CS193p-2021/assignment/A3/A3/SetGameModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "212">
+               </Location>
+               <Location
+                  uuid = "3A8AFBD9-15A8-485F-9AD0-B1DE3A0E19FF - b2a2bf62db2b12b1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (Swift.Int) -&gt; A3.SetGameModel.Card in A3.SetGameModel.dealCards() -&gt; ()"
+                  moduleName = "A3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonz/Github/CS193p-2021/assignment/A3/A3/SetGameModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

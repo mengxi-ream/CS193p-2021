@@ -12,8 +12,26 @@ struct SetGameView: View {
     
     var body: some View {
         VStack {
-            AspectVGrid(items: Array(game.cards[0..<81]), aspectRatio: 2/3, minWidth: 80) { card in
+            Text("Set Game")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+            AspectVGrid(items: Array(game.visibleCards), aspectRatio: 2/3, minWidth: 80) { card in
                 CardView(card: card).padding(4)
+                    .onTapGesture {
+                        game.select(card)
+                    }
+            }
+            Spacer()
+            HStack(spacing: 30) {
+                Button(action: { game.newGame() }, label: {
+                    Text("New Game").font(.headline)
+                })
+                Button(action: { game.cheat() }, label: {
+                    Text("Cheat").font(.headline)
+                })
+                Button(action: { game.dealCards() }, label: {
+                    Text("Deal 3 More Cards").font(.headline)
+                }).disabled(!game.isEnoughCardsInDeck)
             }
         }
         .padding()
@@ -27,9 +45,16 @@ struct CardView: View {
         GeometryReader { geometry in
             ZStack {
                 let cardFrame = RoundedRectangle(cornerRadius: 20)
+                // add fill make sure selecting the black background can select the card
+                cardFrame.fill().foregroundColor(.white)
                 // When you call strokeBorder() with a color parameter like Color.blue,
                 // SwiftUI implicitly adds a foregroundColor() modifier to the view hierarchy for you.
-                cardFrame.stroke(.blue, lineWidth: 3)
+                switch (card.isSelected, card.isMatched) {
+                case (true, 1): cardFrame.stroke(.green, lineWidth: 3)
+                case (true, -1): cardFrame.stroke(.red, lineWidth: 3)
+                case (true, 0): cardFrame.stroke(.orange, lineWidth: 3)
+                default: cardFrame.stroke(.blue, lineWidth: 3)
+                }
                 VStack(spacing: 0) {
                     Spacer()
                     ForEach(0..<card.numOfShapes, id: \.self) { _ in

@@ -8,8 +8,6 @@
 import SwiftUI
 
 class SetGameViewModel: ObservableObject {
-    
-    
     static private func createSetGame() -> SetGameModel {
         SetGameModel(
             numsOfShapes: NumOfShapes.allCases.map{ $0.rawValue },
@@ -23,6 +21,30 @@ class SetGameViewModel: ObservableObject {
     
     var cards: [SetGameModel.Card] {
         return model.cards
+    }
+    
+    var visibleCards: [SetGameModel.Card] {
+        return model.cards.filter({ !$0.isInDeck && !$0.isReplaced })
+    }
+    
+    var isEnoughCardsInDeck: Bool {
+        return model.cards.filter({ $0.isInDeck }).count >= 3
+    }
+    
+    func select(_ card: SetGameModel.Card) {
+        model.select(card)
+    }
+    
+    func newGame() {
+        model = SetGameViewModel.createSetGame()
+    }
+    
+    func cheat() {
+        model.cheat()
+    }
+    
+    func dealCards() {
+        model.dealCards()
     }
 }
 
