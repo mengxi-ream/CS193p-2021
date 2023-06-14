@@ -16,6 +16,7 @@
 		A40D1A2A2A3912BF0065F61F /* SetGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D1A252A3912BF0065F61F /* SetGameViewModel.swift */; };
 		A40D1A2B2A3912BF0065F61F /* CardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D1A262A3912BF0065F61F /* CardComponent.swift */; };
 		A40D1A2C2A3912BF0065F61F /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40D1A272A3912BF0065F61F /* AspectVGrid.swift */; };
+		A4F716BF2A3944E000FF2892 /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F716BE2A3944E000FF2892 /* Cardify.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		A40D1A252A3912BF0065F61F /* SetGameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetGameViewModel.swift; sourceTree = "<group>"; };
 		A40D1A262A3912BF0065F61F /* CardComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardComponent.swift; sourceTree = "<group>"; };
 		A40D1A272A3912BF0065F61F /* AspectVGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
+		A4F716BE2A3944E000FF2892 /* Cardify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				A40D1A232A3912BF0065F61F /* Stripe.swift */,
 				A40D1A092A3910D90065F61F /* A4App.swift */,
 				A40D1A0B2A3910D90065F61F /* SetGameView.swift */,
+				A4F716BE2A3944E000FF2892 /* Cardify.swift */,
 				A40D1A0D2A3910DA0065F61F /* Assets.xcassets */,
 				A40D1A0F2A3910DA0065F61F /* Preview Content */,
 			);
@@ -154,6 +157,7 @@
 			files = (
 				A40D1A292A3912BF0065F61F /* SetGameModel.swift in Sources */,
 				A40D1A0C2A3910D90065F61F /* SetGameView.swift in Sources */,
+				A4F716BF2A3944E000FF2892 /* Cardify.swift in Sources */,
 				A40D1A2C2A3912BF0065F61F /* AspectVGrid.swift in Sources */,
 				A40D1A0A2A3910D90065F61F /* A4App.swift in Sources */,
 				A40D1A2B2A3912BF0065F61F /* CardComponent.swift in Sources */,

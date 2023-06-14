@@ -16,7 +16,7 @@ struct SetGameView: View {
                 .font(.largeTitle)
                 .fontWeight(.bold)
             AspectVGrid(items: Array(game.visibleCards), aspectRatio: 2/3, minWidth: 80) { card in
-                CardView(card: card).padding(4)
+                CardView(game: game, card: card).padding(4)
                     .onTapGesture {
                         game.select(card)
                     }
@@ -39,41 +39,22 @@ struct SetGameView: View {
 }
 
 struct CardView: View {
+    var game: SetGameViewModel
     let card: SetGameModel.Card
     
     var body: some View {
         GeometryReader { geometry in
-            ZStack {
-                let cardFrame = RoundedRectangle(cornerRadius: 20)
-                // add fill make sure selecting the black background can select the card
-                cardFrame.fill().foregroundColor(.white)
-                // When you call strokeBorder() with a color parameter like Color.blue,
-                // SwiftUI implicitly adds a foregroundColor() modifier to the view hierarchy for you.
-                switch (card.isSelected, card.isMatched) {
-                case (true, 1): cardFrame.stroke(.green, lineWidth: 3)
-                case (true, -1): cardFrame.stroke(.red, lineWidth: 3)
-                case (true, 0): cardFrame.stroke(.orange, lineWidth: 3)
-                default: cardFrame.stroke(.blue, lineWidth: 3)
+            VStack(spacing: 0) {
+                ForEach(0..<card.numOfShapes, id: \.self) { _ in
+                    drawShape(in: geometry)
+                        .foregroundColor(CardColor(rawValue: card.color)?.color)
+                        .frame(
+                            width: geometry.size.width * 0.7,
+                            height: geometry.size.height * 0.2
+                        )
+                        .padding(.vertical, geometry.size.height * 0.035)
                 }
-                VStack(spacing: 0) {
-                    Spacer()
-                    ForEach(0..<card.numOfShapes, id: \.self) { _ in
-                        drawShape(in: geometry)
-                            .foregroundColor(CardColor(rawValue: card.color)?.color)
-                            .frame(
-                                width: geometry.size.width * 0.7,
-                                height: geometry.size.height * 0.2
-                            )
-                            .padding(.vertical, geometry.size.height * 0.035)
-                    }
-                    Spacer()
-                }
-                VStack {
-//                    Text("\(card.numOfShapes)")
-//                    Text("\(card.shape)")
-//                    Text("\(card.shading)")
-                }
-            }
+            }.cardify(frameColor: game.getFrameColor(for: card))
         }
     }
     

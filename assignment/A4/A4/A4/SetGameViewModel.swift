@@ -46,6 +46,15 @@ class SetGameViewModel: ObservableObject {
     func dealCards() {
         model.dealCards()
     }
+    
+    func getFrameColor(for card: SetGameModel.Card) -> Color {
+        switch (card.isSelected, card.isMatched) {
+        case (true, 1): return .green
+        case (true, -1): return .red
+        case (true, 0): return .orange
+        default: return .blue
+        }
+    }
 }
 
 enum CardColor: String, CaseIterable {
