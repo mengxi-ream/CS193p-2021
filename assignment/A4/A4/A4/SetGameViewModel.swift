@@ -8,23 +8,24 @@
 import SwiftUI
 
 class SetGameViewModel: ObservableObject {
-    static private func createSetGame() -> SetGameModel {
+    static private func createSetGame(deal: Bool) -> SetGameModel {
         SetGameModel(
             numsOfShapes: NumOfShapes.allCases.map{ $0.rawValue },
             shapes: CardShape.allCases.map{ $0.rawValue },
             shadings: Shading.allCases.map{ $0.rawValue },
-            colors: CardColor.allCases.map{ $0.rawValue }
+            colors: CardColor.allCases.map{ $0.rawValue },
+            deal: deal
         )
     }
     
-    @Published private var model: SetGameModel = createSetGame()
+    @Published private var model: SetGameModel = createSetGame(deal: false)
     
     var cards: [SetGameModel.Card] {
         return model.cards
     }
     
     var visibleCards: [SetGameModel.Card] {
-        return model.cards.filter({ !$0.isInDeck && !$0.isReplaced })
+        return model.cards.filter({ !$0.isInDeck && !$0.isDiscarded })
     }
     
     var isEnoughCardsInDeck: Bool {
@@ -36,7 +37,7 @@ class SetGameViewModel: ObservableObject {
     }
     
     func newGame() {
-        model = SetGameViewModel.createSetGame()
+        model = SetGameViewModel.createSetGame(deal: true)
     }
     
     func cheat() {

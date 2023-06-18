@@ -10,7 +10,7 @@ import Foundation
 struct SetGameModel {
     private(set) var cards: Array<Card>
     
-    init(numsOfShapes: [Int], shapes: [String], shadings: [String], colors: [String]) {
+    init(numsOfShapes: [Int], shapes: [String], shadings: [String], colors: [String], deal: Bool) {
         cards = []
         var cardId = 0
         for numOfShape in numsOfShapes {
@@ -31,8 +31,10 @@ struct SetGameModel {
         }
         
         cards.shuffle();
-        for idx in 0..<12 {
-            cards[idx].isInDeck = false
+        if (deal) {
+            for idx in 0..<12 {
+                cards[idx].isInDeck = false
+            }
         }
     }
     
@@ -62,11 +64,13 @@ struct SetGameModel {
                     cards[chosenId].isSelected.toggle()
                 }
                 if (cards[selectedIds[0]].isMatched == 1) {
-//                    if !selectedIds.contains(chosenId) {
-//                        cards[chosenId].isSelected.toggle()
-//                    }
-                    let inDeckIds = cards.allIndices(where: { $0.isInDeck })
-                    replaceCards(from: inDeckIds, to: selectedIds)
+                    selectedIds.forEach {
+                        cards[$0].isSelected.toggle()
+                        cards[$0].isDiscarded.toggle()
+                    }
+                    cards[chosenId].isSelected.toggle()
+//                    let inDeckIds = cards.allIndices(where: { $0.isInDeck })
+//                    replaceCards(from: inDeckIds, to: selectedIds)
                 }
             }
         }
@@ -84,12 +88,13 @@ struct SetGameModel {
                 cards[$0].isMatched = 0
             }
         }
-        let visibleIds = cards.allIndices(where: { !$0.isInDeck && !$0.isReplaced })
+        let visibleIds = cards.allIndices(where: { !$0.isInDeck && !$0.isDiscarded })
         for i in 0..<visibleIds.count-2 {
             for j in i+1..<visibleIds.count - 1 {
                 for k in j+1..<visibleIds.count {
-                    if isSet([cards[i], cards[j], cards[k]]) {
-                        Array([i, j, k].shuffled().prefix(2)).forEach {
+                    let visibleCardIndices = [visibleIds[i], visibleIds[j], visibleIds[k]]
+                    if isSet(visibleCardIndices.map { cards[$0] }) {
+                        visibleCardIndices.shuffled().prefix(2).forEach {
                             cards[$0].isSelected = true
                         }
                         return
@@ -105,12 +110,9 @@ struct SetGameModel {
         let inDeckIds = cards.allIndices(where: { $0.isInDeck })
         if isSet(selectedIds.map { cards[$0] }) {
             replaceCards(from: inDeckIds, to: selectedIds)
-        } else {
-            let numCardsShowed = cards.filter({ !$0.isReplaced && !$0.isInDeck }).count
-            if inDeckIds.count >= 3 {
-                for idx in 0...2 {
-                    cards[numCardsShowed + idx].isInDeck.toggle()
-                }
+        } else if (inDeckIds.count >= 3) {
+            inDeckIds.prefix(3).forEach {
+                cards[$0].isInDeck.toggle()
             }
         }
     }
@@ -129,7 +131,7 @@ struct SetGameModel {
         let numOfReplacement = selectedIds.count
         if inDeckIds.count >= numOfReplacement {
             for idx in 0..<numOfReplacement {
-                cards[selectedIds[idx]].isReplaced.toggle()
+                cards[selectedIds[idx]].isDiscarded.toggle()
                 cards[selectedIds[idx]].isSelected.toggle()
                 let temp = cards[selectedIds[idx]]
                 cards[selectedIds[idx]] = cards[inDeckIds.last! - numOfReplacement + 1 + idx]
@@ -148,7 +150,7 @@ struct SetGameModel {
         
         var isSelected = false
         var isMatched: Int = 0
-        var isReplaced = false
+        var isDiscarded = false
         var isInDeck = true
     }
 }

@@ -10,13 +10,18 @@ import SwiftUI
 struct Cardify: ViewModifier {
     
     var frameColor: Color
+    var isFaceUp: Bool
     
     func body(content: Content) -> some View {
         ZStack {
             let cardFrame = RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
-            cardFrame.fill().foregroundColor(.white)
-            cardFrame.stroke(frameColor, lineWidth: DrawingConstants.lineWidth)
-            content
+            if (isFaceUp) {
+                cardFrame.fill().foregroundColor(.white)
+                cardFrame.stroke(frameColor, lineWidth: DrawingConstants.lineWidth)
+                content
+            } else {
+                cardFrame.fill().foregroundColor(.blue)
+            }
         }
 //            .rotationEffect(Angle.degrees(card.isMatched == 1 ? 360 : 0)).animation(Animation.easeInOut(duration: 0.5))
     }
@@ -28,7 +33,7 @@ struct Cardify: ViewModifier {
 }
 
 extension View {
-    func cardify(frameColor: Color) -> some View {
-        return self.modifier(Cardify(frameColor: frameColor))
+    func cardify(frameColor: Color, isFaceUp: Bool) -> some View {
+        return self.modifier(Cardify(frameColor: frameColor, isFaceUp: isFaceUp))
     }
 }
